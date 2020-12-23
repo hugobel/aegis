@@ -1,15 +1,17 @@
-import React, { useContext } from "react";
-import MoviesContext, { getMoviesCoordinates } from "movies-context";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovies } from "store/selectors";
+import { selected } from "store/actions";
 
 export const RadarPanel = () => {
-  const { state, selectMovie } = useContext(MoviesContext);
-  const coordinates = getMoviesCoordinates(state);
+  const dispatch = useDispatch();
+  const movies = useSelector(getMovies);
 
   return (
     <section>
       <h1>Radar Panel</h1>
-      {coordinates.map(({ id, x, y }, i) => (
-        <p key={id} onClick={() => selectMovie(id)}>{`${i}/${x}/${y}`}</p>
+      {Object.values(movies).map(({ id, title }, i) => (
+        <p key={id} onClick={() => dispatch(selected.append(id))}>{`${i} / ${title}`}</p>
       ))}
     </section>
   );

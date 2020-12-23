@@ -1,14 +1,12 @@
 import React from "react";
-import { FiltersPanel, RadarPanel, PerformancePanel } from "containers/panels";
+import { FiltersPanel, PerformancePanel, RadarPanel } from "containers/panels";
 
-function App() {
-  return (
-    <div className="App">
-      <FiltersPanel />
-      <PerformancePanel />
-      <RadarPanel />
-    </div>
-  );
-}
+const App: React.FC = () => (
+  <div className="app">
+    <FiltersPanel />
+    <PerformancePanel />
+    <RadarPanel />
+  </div>
+);
 
 export default App;

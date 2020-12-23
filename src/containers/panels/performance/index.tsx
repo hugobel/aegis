@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import MoviesContext, { getSelectedMovies } from "movies-context";
+import React from "react";
+import { useSelector } from "react-redux";
+import { getSelectedMovies } from "store/selectors";
 
 export const PerformancePanel = () => {
-  const { state } = useContext(MoviesContext);
-  const selectedMovies = getSelectedMovies(state);
+  const selectedMovies = useSelector(getSelectedMovies);
 
   return (
     <section>

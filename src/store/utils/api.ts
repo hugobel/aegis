@@ -24,24 +24,16 @@ const expandProps = ({ genres, revenue, ...rest }: CSVRow): Movie => {
   };
 };
 
-const parseCsv = ({ data }: AxiosResponse) =>
-  parse(data, { header: true }).data as Array<CSVRow>;
+const parseCsv = ({ data }: AxiosResponse) => parse(data, { header: true }).data as Array<CSVRow>;
 
-const transform: (x: AxiosResponse) => Movies = pipe(
-  parseCsv,
-  map(expandProps),
-  indexBy(prop("id"))
-);
+const enhanceEntries: (x: AxiosResponse) => Movies = pipe(parseCsv, map(expandProps), indexBy(prop("id")));
 
-export const fetchVersionData = (): Promise<string> =>
-  get(`${BASE_URL}/version.txt`).then(({ data }) => data.toString());
+const fetchVersion = (): Promise<string> => get(`${BASE_URL}/version.txt`).then(({ data }) => data.toString());
 
-export const fetchDataset: (version: string) => Promise<Movies> = async (
-  version
-) => get(`${BASE_URL}/${version}.csv`).then(transform);
+export const fetchMovies: (version: string) => Promise<Movies> = async (version) =>
+  get(`${BASE_URL}/${version}.csv`).then(enhanceEntries);
 
-export const getVersionToUpdate = async (): Promise<string | null> => {
-  const remote = await fetchVersionData();
-  const local = localStorage.getItem("datasetVersion");
+export const compareVersions = async (local: string | null): Promise<string | null> => {
+  const remote = await fetchVersion();
   return local === remote ? null : remote;
 };
