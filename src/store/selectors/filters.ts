@@ -1,8 +1,8 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { isEmpty, intersection, pick, values } from "ramda";
-import { State } from "store/types";
-import { getItemsInRange } from "store/utils";
-import { getTables, getGenres, getMovies } from "./dataset";
+import { createSelector } from '@reduxjs/toolkit';
+import { isEmpty, intersection, pick, values } from 'ramda';
+import { State } from 'store/types';
+import { getItemsInRange } from 'store/utils';
+import { getTables, getGenres, getMovies } from './dataset';
 
 export const getActiveFilters = ({ filters }: State) => filters;
 

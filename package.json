@@ -13,6 +13,8 @@
     "@types/react-dom": "^16.9.8",
     "axios": "^0.21.0",
     "binary-search-bounds": "^2.0.4",
+    "d3": "^6.3.1",
+    "lodash.debounce": "^4.0.8",
     "papaparse": "^5.3.0",
     "ramda": "^0.27.1",
     "react": "^17.0.1",
@@ -21,6 +23,13 @@
     "react-scripts": "4.0.0",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@types/d3": "^6.2.0",
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/papaparse": "^5.2.4",
+    "@types/ramda": "^0.27.32",
+    "@types/react-redux": "^7.1.12"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -47,11 +56,7 @@
     ]
   },
   "prettier": {
-    "printWidth": 100
-  },
-  "devDependencies": {
-    "@types/papaparse": "^5.2.4",
-    "@types/ramda": "^0.27.32",
-    "@types/react-redux": "^7.1.12"
+    "printWidth": 100,
+    "singleQuote": true
   }
 }

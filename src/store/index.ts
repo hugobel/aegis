@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./reducers";
-import { getPersistentDataset, serializeMovies } from "./utils";
+import { configureStore } from '@reduxjs/toolkit';
+import reducer from './reducers';
+import { getPersistentDataset, serializeMovies } from './utils';
 
 const getPreloadedState = () => {
   const storedDataset = getPersistentDataset();
@@ -9,7 +9,7 @@ const getPreloadedState = () => {
   const { movies, version } = storedDataset;
 
   return {
-    dataset: {
+    entities: {
       version,
       ...serializeMovies(movies),
     },

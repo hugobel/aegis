@@ -1,11 +1,12 @@
-import { actions as datasetActions } from "store/reducers/dataset";
-import { actions as filtersActions } from "store/reducers/filters";
-import { actions as selectedActions } from "store/reducers/selected";
-import { getDatasetVersion } from "store/selectors";
-import { StoreThunk, DatasetStatus } from "store/types";
-import { compareVersions, fetchMovies, serializeMovies, storePersistentDataset } from "store/utils";
+import { entitiesActions } from 'store/entities';
+import { actions as datasetActions } from 'store/reducers/dataset';
+import { actions as filtersActions } from 'store/reducers/filters';
+import { actions as selectedActions } from 'store/reducers/selected';
+import { getDatasetVersion } from 'store/selectors';
+import { StoreThunk, DatasetStatus } from 'store/types';
+import { compareVersions, fetchMovies, serializeMovies, storePersistentDataset } from 'store/utils';
 
-const { setStatus, setCollection, setError } = datasetActions;
+const { setStatus, setCollection, setError } = entitiesActions;
 
 export const reconcile = (): StoreThunk => async (dispatch, getState) => {
   dispatch(setStatus(DatasetStatus.FETCHING));
@@ -24,7 +25,7 @@ export const reconcile = (): StoreThunk => async (dispatch, getState) => {
     }
   } catch (e) {
     console.error(e);
-    dispatch(setError("DEMO"));
+    dispatch(setError('DEMO'));
   }
 };
 

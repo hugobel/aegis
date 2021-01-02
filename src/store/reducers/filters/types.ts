@@ -1,17 +1,17 @@
-type FilterBounds = [number, number];
+export type FilterBounds = [number, number];
 
 export type DateFilter = {
-  type: "date";
+  type: 'date';
   criteria: FilterBounds;
 };
 
 export type RevenueFilter = {
-  type: "revenue";
+  type: 'revenue';
   criteria: FilterBounds;
 };
 
 export type GenreFilter = {
-  type: "genre";
+  type: 'genre';
   criteria: string;
 };
 
