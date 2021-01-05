@@ -6,9 +6,9 @@ export type Movie = {
   id: string;
   title: string;
   revenue: Array<number>;
-  total: number;
+  // total: number;
   genres: Array<string>;
-  releaseDate: number;
+  releaseDate: string;
 };
 
 export type Movies = Record<string, Movie>;

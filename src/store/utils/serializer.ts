@@ -1,16 +1,4 @@
-import {
-  append,
-  assoc,
-  forEach,
-  lensProp,
-  map,
-  pipe,
-  prop,
-  reduce,
-  sortBy,
-  values,
-  view,
-} from 'ramda';
+import { append, assoc, forEach, lensProp, pipe, reduce, values, view } from 'ramda';
 import { Movie, Movies } from 'index.d';
 import { GenreDirectory } from 'store/types';
 
@@ -27,27 +15,11 @@ const mapGenres = (acc: GenreDirectory, { id, genres }: Movie): GenreDirectory =
   return acc;
 };
 
-const buildDateTable: (movies: Array<Movie>) => Array<[number, string]> = pipe(
-  sortBy(prop('releaseDate')),
-  map(({ id, releaseDate }: Movie) => [releaseDate, id])
-);
-
-const buildRevenueTable: (movies: Array<Movie>) => Array<[number, string]> = pipe(
-  sortBy(prop('total')),
-  map(({ id, total }: Movie) => [total, id])
-);
-
 export const serializeMovies = (directory: Movies) => {
   const movies = values(directory);
 
   return {
-    // entities: {
     movies: directory,
     genres: reduce(mapGenres, {})(movies),
-    // },
-    // tables: {
-    //   byDate: buildDateTable(movies),
-    //   byRevenue: buildRevenueTable(movies),
-    // },
   };
 };
